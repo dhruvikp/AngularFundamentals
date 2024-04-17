@@ -1,0 +1,26 @@
+
+<h1>::  Add Server ::</h1>
+<p *ngIf="serverCreated else noServerCreated "> {{serverStatus}}</p>
+
+
+<ng-template #noServerCreated>
+    <p>No server created!</p>
+</ng-template>
+
+
+<!-- Server Id: <input type="text" [(ngModel)] = "serverId" /> <br/> -->
+Server Id: <input type="text" #serverIdInput /> <br/>
+Server Name: <input type="text" [(ngModel)] = "serverName" /> <br/>
+Server Status: <input type="text" [(ngModel)] = "servStatus" /><br/>
+
+
+<!-- <input type="text" (input)="OnUpdateServerName($event)"/> -->
+<button [disabled]="!allowNewServer" (click)="onCreateServer()"> Add Server </button>
+
+
+<br/>
+<br/>
+
+<app-servers-list [srv]="servers" (listCompleted)="updateInfo()"></app-servers-list>
+
+{{serversListCompleted}}
